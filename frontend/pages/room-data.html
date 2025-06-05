@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Room Data - Sibayak Multi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../assets/styles/styles.css">
+</head>
+
+<body class="font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <sidebar-component></sidebar-component>
+
+
+    <!-- Main Content -->
+    <main class="flex-1 p-8 mt-6 bg-white">
+      <!-- Top Bar -->
+      <topbar-component title="Room Data"></topbar-component>
+
+      <!-- Guest Data -->
+      <div class="p-6">
+        <!-- Table -->
+        <div class="overflow-x-auto border">
+          <table class="min-w-full text-sm text-left bg-white rounded">
+            <thead>
+              <tr class="text-gray-600 border-b">
+                <th class="py-3 px-4 font-normal">Customer</th>
+                <th class="py-3 px-4 font-normal">Room No</th>
+                <th class="py-3 px-4 font-normal">Room Type</th>
+                <th class="py-3 px-4 font-normal">Rent</th>
+                <th class="py-3 px-4 font-normal">Status</th>
+              </tr>
+            </thead>
+            <tbody id="room-data-table">
+              <!-- <tr class="border-b hover:bg-gray-50">
+                <td class="py-3 px-4 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  Max Verstappen
+                </td>
+                <td class="py-3 px-4">
+                  101
+                </td>
+                <td class="py-3 px-4">Deluxe</td>
+                <td class="py-3 px-4">$ 299</td>
+                <td class="py-3 px-4 text-yellow-500">Booked</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                 <td class="py-3 px-4 flex items-center gap-2"> <svg class="w-5 h-5 text-gray-500" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg> Sebastian Vettel</td>
+                <td class="py-3 px-4">
+                  102
+                </td>
+                <td class="py-3 px-4">Deluxe</td>
+                <td class="py-3 px-4">$ 299</td>
+                <td class="py-3 px-4 text-blue-500">Empty</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                 <td class="py-3 px-4 flex items-center gap-2"> <svg class="w-5 h-5 text-gray-500" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg> Fernando Alonso</td>
+                <td class="py-3 px-4">
+                  301
+                </td>
+                <td class="py-3 px-4">Executive</td>
+                <td class="py-3 px-4">$ 499</td>
+                <td class="py-3 px-4 text-blue-500">Empty</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                <td class="py-3 px-4 flex items-center gap-2"> <svg class="w-5 h-5 text-gray-500" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg> Bianca Susy</td>
+                <td class="py-3 px-4">
+                  201
+                </td>
+                <td class="py-3 px-4">Deluxe</td>
+                <td class="py-3 px-4">$ 299</td>
+                <td class="py-3 px-4 text-yellow-500">Booked</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                   <td class="py-3 px-4 flex items-center gap-2"> <svg class="w-5 h-5 text-gray-500" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg> Nico Rosberg</td>
+                <td class="py-3 px-4">
+                  501
+                </td>
+                <td class="py-3 px-4">Deluxe</td>
+                <td class="py-3 px-4">$ 299</td>
+                <td class="py-3 px-4 text-yellow-500">Booked</td>
+              </tr>
+              <tr class="border-b hover:bg-gray-50">
+                     <td class="py-3 px-4 flex items-center gap-2"> <svg class="w-5 h-5 text-gray-500" fill="none"
+                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg> Michael Schumacher</td>
+                <td class="py-3 px-4">
+                  401
+                </td>
+                <td class="py-3 px-4">Deluxe</td>
+                <td class="py-3 px-4">$ 299</td>
+                <td class="py-3 px-4 text-blue-500">Empty</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-end items-center mt-4 text-sm text-gray-500">
+          <span class="mr-2">PAGE</span>
+          <span class="border border-gray-300 px-2 py-1 rounded">1</span>
+          <span class="ml-2">OF 43</span>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
