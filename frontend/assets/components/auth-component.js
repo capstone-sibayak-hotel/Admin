@@ -32,43 +32,45 @@ class AuthComponent extends HTMLElement {
     this.querySelector('#toggle-mode').addEventListener('click', (e) => {
       e.preventDefault();
       this.mode = isLogin ? 'register' : 'login';
-      this.render();
+      this.render(); 
     });
   }
 
   handleAuth(e) {
     e.preventDefault();
+    
     const username = this.querySelector('#username').value;
-    const password = this.querySelector('#password').value();
+    const password = this.querySelector('#password').value;
 
     if (this.mode === 'login') {
       // Login logic
       const user = JSON.parse(localStorage.getItem(username));
       if (user && user.password === password) {
         const token = this.generateToken(username);  
-        localStorage.setItem('authToken', token);  
+        localStorage.setItem('authToken', token); 
         localStorage.setItem('loggedInUser', username);  
         alert('Login successful!');
-        window.location.href = 'index.html'; 
+        window.location.href = 'index.html';  // redirect setelah login
       } else {
         alert('Invalid username or password');
       }
     } else {
-      // Register logic
+      // register logic
       if (localStorage.getItem(username)) {
         alert('Username already taken.');
       } else {
+        // simpan data pengguna ke localStorage
         localStorage.setItem(username, JSON.stringify({ username, password }));
         alert('Registration successful! You can now log in.');
         this.mode = 'login';  
-        this.render();
+        this.render();  
       }
     }
   }
 
-  // Dummy function to simulate token generation (for testing purposes)
+ //dummy testing
   generateToken(username) {
-    return btoa(username + ':' + Date.now()); // Simple encoding (Base64) for testing
+    return btoa(username + ':' + Date.now()); 
   }
 }
 
