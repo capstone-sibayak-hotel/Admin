@@ -1,4 +1,4 @@
-const Admin = require("../models/Admin"); // Your Mongoose Admin model
+const Admin = require("../../models/Admin"); // Your Mongoose Admin model
 const jwt = require("jsonwebtoken");
 
 async function registerAdminHandler(req, h) {
