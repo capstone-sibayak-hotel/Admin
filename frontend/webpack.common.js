@@ -38,6 +38,11 @@ module.exports = {
       filename: "room-data.html",
     }),
 
+    new HtmlWebpackPlugin({
+      template: "./pages/login-admin.html",
+      filename: "login-admin.html",
+    }),
+
     new CopyWebpackPlugin({
       patterns: [
         { from: "./assets", to: "assets", noErrorOnMissing: true },

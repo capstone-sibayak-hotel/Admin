@@ -1,5 +1,4 @@
 class TopbarComponent extends HTMLElement {
-
   connectedCallback() {
     const title = this.getAttribute("title") || "Dashboard";
     const template = `
@@ -21,26 +20,44 @@ class TopbarComponent extends HTMLElement {
           color: #4B5563;
           font-size: 1.125rem;
         }
+        .logout-btn {
+          cursor: pointer;
+          color: #DC2626;
+          font-size: 0.9rem;
+          margin-left: 1rem;
+          text-decoration: underline;
+          transition: color 0.2s ease;
+        }
+        .logout-btn:hover {
+          color: #B91C1C;
+        }
         svg {
-          stroke: currentColor;
+          width: 2rem;
+          height: 2rem;
+          stroke: #4B5563;
         }
       </style>
+
       <div class="topbar">
         <h1>${title}</h1>
         <div class="admin-info">
-          <svg class="w-8 h-8" fill="none" stroke-width="2" viewBox="0 0 24 24">
+          <svg fill="none" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
           <span class="font-semibold">Admin</span>
-          <svg class="w-4 h-4" fill="none" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
+          <span class="logout-btn" id="logoutBtn">Logout</span>
         </div>
       </div>
     `;
 
     this.innerHTML = template;
+
+    // Handle logout
+    this.querySelector('#logoutBtn')?.addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = 'login-admin.html';
+    });
   }
 }
 
