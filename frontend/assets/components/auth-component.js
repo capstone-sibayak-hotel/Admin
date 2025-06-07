@@ -1,16 +1,17 @@
+import { loginUser } from '../../api/login.js'; 
+
 class AuthComponent extends HTMLElement {
   connectedCallback() {
-    this.mode = 'login';  
+    this.mode = 'login';
     this.render();
   }
 
   render() {
     const isLogin = this.mode === 'login';
     this.innerHTML = `
+      <link rel="stylesheet" href="../styles/login.css">
       <div class="container">
-        <div class="left">
-          <img src="../assets/images/login-background.jpg" alt="background" />
-        </div>
+        <div class="left"></div>
         <div class="right">
           <h2>${isLogin ? 'SIGN IN' : 'REGISTER'}</h2>
           <form id="auth-form">
@@ -32,7 +33,7 @@ class AuthComponent extends HTMLElement {
     this.querySelector('#toggle-mode').addEventListener('click', (e) => {
       e.preventDefault();
       this.mode = isLogin ? 'register' : 'login';
-      this.render(); 
+      this.render();
     });
   }
 
@@ -43,34 +44,20 @@ class AuthComponent extends HTMLElement {
     const password = this.querySelector('#password').value;
 
     if (this.mode === 'login') {
-      // Login logic
-      const user = JSON.parse(localStorage.getItem(username));
-      if (user && user.password === password) {
-        const token = this.generateToken(username);  
-        localStorage.setItem('authToken', token); 
-        localStorage.setItem('loggedInUser', username);  
-        alert('Login successful!');
-        window.location.href = 'index.html';  // redirect setelah login
-      } else {
-        alert('Invalid username or password');
-      }
-    } else {
-      // register logic
-      if (localStorage.getItem(username)) {
-        alert('Username already taken.');
-      } else {
-        // simpan data pengguna ke localStorage
-        localStorage.setItem(username, JSON.stringify({ username, password }));
-        alert('Registration successful! You can now log in.');
-        this.mode = 'login';  
-        this.render();  
-      }
+      
+      loginUser({ username, password })
+        .then(data => {
+          if (data.token) {
+            localStorage.setItem('authToken', data.token);  
+            localStorage.setItem('loggedInUser', username);  
+            alert('Login successful!');
+            window.location.href = 'index.html';  
+          } else {
+            alert('Invalid username or password');
+          }
+        })
+        .catch(() => alert('Server error'));
     }
-  }
-
- //dummy testing
-  generateToken(username) {
-    return btoa(username + ':' + Date.now()); 
   }
 }
 
