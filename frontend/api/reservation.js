@@ -1,20 +1,22 @@
-export async function fetchBookings() {
-  const res = await fetch("http://localhost:9000/reservations");
-  return res.json();
-}
+import { API_URL } from '../config.js';  
 
-export async function deleteReservation(id) {
-  const res = await fetch(`http://localhost:9000/reservations/${id}`, {
-    method: "DELETE",
+export async function fetchBookings(token) {
+  const res = await fetch(`${API_URL}/bookings`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,  
+    }
   });
   return res.json();
 }
 
-// export async function createBooking(data) {
-//   const res = await fetch('http://localhost:9000/reservations', {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(data)
-//   });
-//   return res.json();
-// }
+export async function deleteReservation(id, token) {
+  const res = await fetch(`${API_URL}/bookings/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Bearer ${token}`,  
+    },
+  });
+  return res.json();
+}
