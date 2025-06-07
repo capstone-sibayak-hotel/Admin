@@ -1,4 +1,5 @@
 import './assets/styles/styles.css';
+import "./assets/styles/login.css";
 
 import './assets/components/sidebar.js';
 import './assets/components/topbar-component.js';
