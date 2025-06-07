@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-import "./assets/styles/styles.css";
-=======
 import './assets/styles/styles.css';
-import "./assets/styles/login.css";
->>>>>>> 685895325d529b7fa9ea176150c52b29bb9d9420
 
 import "./assets/components/sidebar.js";
 import "./assets/components/topbar-component.js";
