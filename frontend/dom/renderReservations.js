@@ -14,8 +14,8 @@ export default async function renderReservations() {
 
   const reservationsHtml = reservations.reduce((html, reservation) => {
     const {
-      id,
-      name,
+      _id,
+      username,
       gender,
       phone,
       city,
@@ -23,12 +23,13 @@ export default async function renderReservations() {
       roomType,
       checkIn,
       checkOut,
+      totalPrice:roomPrice,
       createdAt,
     } = reservation;
 
     // Create the objects to be stringified
     const roomInfoData = {
-      id,
+      _id,
       roomType,
       checkIn,
       checkOut,
@@ -36,13 +37,13 @@ export default async function renderReservations() {
     };
 
     const customerInfoData = {
-      name,
+      username,
       gender,
       phone,
       city,
+      roomPrice,
       country,
     };
-
 
     return (
       html +

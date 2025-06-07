@@ -1,6 +1,7 @@
 import { API_URL } from '../config.js';  
 
-export async function fetchBookings(token) {
+const token = localStorage.getItem("authToken");
+export async function fetchBookings() {
   const res = await fetch(`${API_URL}/bookings`, {
     method: 'GET',
     headers: {
@@ -11,7 +12,7 @@ export async function fetchBookings(token) {
   return res.json();
 }
 
-export async function deleteReservation(id, token) {
+export async function deleteReservation(id) {
   const res = await fetch(`${API_URL}/bookings/${id}`, {
     method: 'DELETE',
     headers: {

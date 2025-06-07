@@ -129,9 +129,10 @@ async function updateRoomByIdHandler(req, h) {
             message: "Gagal memperbarui room. Nomor room yang baru sudah digunakan oleh room lain.",
         }).code(409);
     }
+    console.error(err)
     return h.response({
       status: "error",
-      message: "Terjadi kesalahan pada server saat memperbarui room.",
+      message: "Terjadi kesalahan saat memperbarui room.",
     }).code(500);
   }
 }

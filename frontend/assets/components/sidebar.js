@@ -21,7 +21,7 @@ class SidebarComponent extends HTMLElement {
   }
 
   linkItem(href, iconBaseName, label, currentPath) {
-    const isActive = currentPath === href;
+    const isActive = currentPath === href.split('.')[0];
     const iconSrc = `../assets/images/${iconBaseName}${isActive ? "-white" : ""}.svg`;
     const linkClass = `flex gap-2 px-6 py-3 ${isActive ? "font-medium bg-[#7C6A46] text-white" : "text-gray-700 hover:bg-gray-100"}`;
     return `

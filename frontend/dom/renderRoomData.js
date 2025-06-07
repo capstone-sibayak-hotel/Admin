@@ -2,7 +2,7 @@ import { fetchRooms } from "../api/room";
 
 export default async function renderRoomData() {
   const resData = await fetchRooms();
-  const rooms = resData.data.roomsData
+  const rooms = resData.data.rooms
 
 
   const roomHtml = rooms.reduce((htmlAccumulator, room) => {
@@ -20,7 +20,7 @@ export default async function renderRoomData() {
           ${room.roomNo}
         </td>
         <td class="py-3 px-4">${room.roomType}</td>
-        <td class="py-3 px-4">$ ${room.roomPrice}</td>
+        <td class="py-3 px-4">Rp ${room.roomPrice}</td>
         <td class="py-3 px-4 ${room.isBooked ? 'text-yellow-500' : 'text-blue-500'}">${room.isBooked ? 'Booked' : '-'}</td>
       </tr>
     `;

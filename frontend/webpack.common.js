@@ -6,7 +6,8 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: {
-    admin: "./index.js",
+    app: "./index.js",
+    "login-admin":"./login-admin.js"
   },
   output: {
     filename: "[name].bundle.js",
@@ -41,6 +42,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./pages/login-admin.html",
       filename: "login-admin.html",
+      chunks:["login-admin"]
     }),
 
     new CopyWebpackPlugin({
