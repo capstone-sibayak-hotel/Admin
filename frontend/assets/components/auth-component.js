@@ -47,8 +47,9 @@ class AuthComponent extends HTMLElement {
       
       loginUser({ username, password })
         .then(data => {
-          if (data.token) {
-            localStorage.setItem('authToken', data.token);  
+          console.log(data)
+          if (data.accessToken) {
+            localStorage.setItem('authToken', data.accessToken);  
             localStorage.setItem('loggedInUser', username);  
             alert('Login successful!');
             window.location.href = 'index.html';  

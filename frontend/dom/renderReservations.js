@@ -4,7 +4,7 @@ const reservationContainer = document.getElementById("reservation-container");
 
 export default async function renderReservations() {
   const bookingResponse = await fetchBookings();
-  const reservations = bookingResponse.data.reservations;
+  const reservations = bookingResponse.data.bookings;
 
   if (!reservations || !Array.isArray(reservations)) {
     console.error("Failed to fetch or parse reservations.", bookingResponse);
