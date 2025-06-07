@@ -15,7 +15,6 @@ const roomSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    enum: ['Deluxe', 'Executive', 'Family'] // Added common room types, adjust as needed
   },
   roomPrice: {
     type: Number,

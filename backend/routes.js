@@ -1,62 +1,67 @@
 const { registerAdminHandler, loginAdminHandler } = require("./controllers/auth/auth-controller");
-const {
-  addReservationHandler,
-  getAllReservationsHandler,
-  deleteReservationByIdHandler,
-} = require("./controllers/reservation-controller");
+const { deleteBookingByIdHandler, getAllBookings, addBookingHandler } = require("./controllers/booking-controller");
 const {
   getAllRoomsHandler,
   updateRoomByIdHandler,
+  addRoomDataHandler,
 } = require("./controllers/rooom-controller");
 
 const routes = [
   // Auth Routes
   {
     method:"POST",
-    path:"/register",
+    path:"/api/register-admin",
     handler:registerAdminHandler
   },
   {
     method:"POST",
-    path:"/login",
+    path:"/api/login-admin",
     handler:loginAdminHandler
   },
   {
     method: "GET",
     path: "/",
     handler: (request, h) => {
-      return h.redirect(`/reservations`);
+      return 'No page found';
     },
   },
+
+  // TEST ADD
   {
     method: "POST",
-    path: "/reservations",
-    handler: addReservationHandler,
-    options: { auth: "jwt" },
+    path: "/api/bookings",
+    handler: addBookingHandler,
   },
+  // TEST ADD
   {
     method: "GET",
-    path: "/reservations",
-    handler: getAllReservationsHandler,
+    path: "/api/bookings",
+    handler: getAllBookings,
     options: { auth: "jwt" },
   },
   {
     method: "DELETE",
-    path: "/reservations/{id}",
-    handler: deleteReservationByIdHandler,
+    path: "/api/bookings/{id}",
+    handler: deleteBookingByIdHandler,
     options: { auth: "jwt" },
   },
 
   // ROOMS
   {
     method: "GET",
-    path: "/rooms",
+    path: "/api/rooms",
     handler: getAllRoomsHandler,
     options: { auth: "jwt" },
   },
   {
+    method: "POST",
+    path: "/api/rooms",
+    handler: addRoomDataHandler,
+    options: { auth: "jwt" },
+  },
+  {
     method: "PUT",
-    path: "/rooms/{roomNumber}",
+    path: "/api/rooms/{roomNumber}",
     handler: updateRoomByIdHandler,
     options: { auth: "jwt" },
   },
