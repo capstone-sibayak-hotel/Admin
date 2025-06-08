@@ -7,11 +7,12 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   entry: {
     app: "./index.js",
-    "login-admin":"./login-admin.js"
+    "login-admin": "./login-admin.js",
   },
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "../docs"),
+    publicPath: "/Admin/",
   },
   module: {
     rules: [
@@ -29,26 +30,32 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./pages/index.html",
       filename: "index.html",
+      chunks: ["app"],
     }),
     new HtmlWebpackPlugin({
       template: "./pages/reservation-data.html",
       filename: "reservation-data.html",
+      chunks: ["app"],
     }),
     new HtmlWebpackPlugin({
       template: "./pages/room-data.html",
       filename: "room-data.html",
+      chunks: ["app"],
     }),
 
     new HtmlWebpackPlugin({
       template: "./pages/login-admin.html",
       filename: "login-admin.html",
-      chunks:["login-admin"]
+      chunks: ["login-admin"],
+    }),
+    new HtmlWebpackPlugin({
+      template: "./pages/register-admin.html",
+      filename: "register-admin.html",
+      chunks: ["login-admin"],
     }),
 
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "./assets", to: "assets", noErrorOnMissing: true },
-      ],
+      patterns: [{ from: "./assets", to: "assets", noErrorOnMissing: true }],
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
