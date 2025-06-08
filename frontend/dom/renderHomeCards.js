@@ -7,10 +7,13 @@ export async function renderHomeCards() {
   const bookingsRes = await fetchBookings();
   const bookings = bookingsRes.data.bookings;
   console.log(bookings);
-  const guests = bookings.reduce((total, booking) => total + (booking.guests || 0), 0);
+  const guests = bookings.reduce(
+    (total, booking) => total + (booking.guests || 0),
+    0
+  );
   cardsContainer.innerHTML = `
-  <stat-card value=${bookings.length} label="New Booking"></stat-card>
-  <stat-card value=${guests} label="Total Guest"></stat-card>
+  <stat-card value=${bookings.length} label="New Booking Pending"></stat-card>
+  <stat-card value=${guests} label="Guests on Reservation"></stat-card>
 `;
 
   await renderPercentageBar();
@@ -35,7 +38,7 @@ async function renderPercentageBar() {
     const booked = rooms.filter(
       (r) => r.roomType && r.roomType.toLowerCase().includes(key) && r.isBooked
     ).length;
-    const percentage = total ? (booked / total) * 100 : 0;
+    const percentage = total ? Math.round((booked / total) * 100) : 0;
     return { label, percentage };
   });
 

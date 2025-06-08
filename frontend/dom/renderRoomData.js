@@ -14,14 +14,14 @@ export default async function renderRoomData() {
             <path stroke-linecap="round" stroke-linejoin="round"
               d="M5.121 17.804A13.937 13.937 0 0112 15c2.21 0 4.28.535 6.121 1.485M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          ${room.customer ? room.customer : 'empty'}
+          ${room.customer ? room.customer : '-'}
         </td>
         <td class="py-3 px-4">
           ${room.roomNo}
         </td>
         <td class="py-3 px-4">${room.roomType}</td>
         <td class="py-3 px-4">Rp ${room.roomPrice}</td>
-        <td class="py-3 px-4 ${room.isBooked ? 'text-yellow-500' : 'text-blue-500'}">${room.isBooked ? 'Booked' : '-'}</td>
+        <td class="py-3 px-4 ${room.isBooked ? 'text-yellow-600' : 'text-blue-500'}">${room.isBooked ? 'Booked' : 'empty'}</td>
       </tr>
     `;
   }, "");
