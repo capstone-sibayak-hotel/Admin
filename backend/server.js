@@ -8,7 +8,7 @@ const connectToDB = require("./db_connection");
 (async function () {
   await connectToDB();
   const server = Hapi.server({
-    port: Number(process.env.PORT),
+    port: Number(process.env.PORT) || 5000,
     host: "localhost",
     routes: {
       cors: {
@@ -27,7 +27,7 @@ const connectToDB = require("./db_connection");
       sub: false,
       nbf: true,
       exp: true,
-      maxAgeSec: 14400, // 4 hours, adjust as needed
+      maxAgeSec: 14400, // 4 hours
       timeSkewSec: 15,
     },
     validate: (artifacts, request, h) => {

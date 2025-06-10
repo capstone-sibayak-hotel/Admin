@@ -17,17 +17,17 @@ if (!localStorage.getItem("authToken") && !path.endsWith("login-admin")) {
 } else {
   console.log(path);
   // Admin dashboard (home)
-  if (path === '/') {
+  if (path === '/' || path.includes('index')) {
     renderHomeCards();
   }
 
   // Reservation Data page
-  else if (path === "/reservation-data") {
+  else if (path.includes("reservation-data")) {
     renderReservations();
   }
 
   // Room Data page
-  else if (path === "/room-data") {
+  else if (path.includes("room-data")) {
     renderRoomData();
   }
 }

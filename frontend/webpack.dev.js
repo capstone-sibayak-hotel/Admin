@@ -10,7 +10,7 @@ module.exports = merge(common, {
     },
     open: true,
     hot: true,
-    port: 3000,
+    port: 9000,
     historyApiFallback: true,
   },
 });

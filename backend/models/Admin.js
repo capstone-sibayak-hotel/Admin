@@ -7,7 +7,7 @@ const adminSchema = new mongoose.Schema({
     required: true,
     unique: true,
     trim: true,
-    lowercase: true // Good for usernames to avoid case sensitivity issues
+    lowercase: true 
   },
   password: {
     type: String,
